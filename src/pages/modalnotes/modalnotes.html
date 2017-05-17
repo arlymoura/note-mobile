@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color='navbarColor'>
+    <ion-title>
+      Notas
+    </ion-title>
+    <ion-buttons end start>
+      <button ion-button (click)="clickExit()">
+        <span ion-text color="dark" showWhen="ios">Sair</span>
+        <ion-icon name="exit" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+
+<ion-card>
+    <ion-card-header>
+      <h1><b>{{note.name}}</b></h1>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{note.body}}</p>
+      <p><b>Status:</b> {{note.status}}</p>
+      <p><b>Tipo:</b> {{note.type_note}}</p>
+      <p><b>Data:</b> Criação: {{note.created_at}}</p>
+      <p><b>Primeira Vizualização:</b> {{note.fist_view}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

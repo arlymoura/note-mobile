@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color='navbarColor'>
+    <ion-title>
+      Adicionar
+    </ion-title>
+    <ion-buttons end start>
+      <button ion-button (click)="clickExit()">
+        <span ion-text color="dark" showWhen="ios">Voltar</span>
+        <ion-icon name="exit" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Privacidade</ion-label>
+      <ion-select cancelText="Cancelar" [(ngModel)]="sticker.type_note" (ionChange)="onChange(sticker.type_note)">
+        <ion-option value="type_public">Pública</ion-option>
+        <ion-option value="type_private">Privada</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item [hidden]="!value">
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="sticker.password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-select cancelText="Cancelar" [(ngModel)]="sticker.status">
+        <ion-option value="active">Ativa</ion-option>
+        <ion-option value="inactive">Inativa</ion-option>
+        <ion-option value="draft">Rascunho</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <h5>Título</h5>
+  <ion-item>
+    <ion-input placeholder="Título" type="text" [(ngModel)]="sticker.name"></ion-input>
+  </ion-item>
+
+  <h5>Descrição</h5>
+  <ion-item>
+    <ion-textarea placeholder="Descrição" type="text" [(ngModel)]="sticker.body"></ion-textarea>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+      </ion-col>
+      <ion-col col-5>
+        <button ion-button color="primary" (click)="createNote(sticker)">Salvar</button>
+      </ion-col>
+      <ion-col col-5>
+        <button ion-button color="danger" (click)="clickExit()">Voltar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-input type="text"></ion-input>
+
+</ion-content>

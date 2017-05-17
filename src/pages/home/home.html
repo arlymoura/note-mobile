@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color='navbarColor'>
+    <ion-title>
+      Notas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+
+  <ion-searchbar placeholder="Pesquisar"(ionInput)="getItems($event)"></ion-searchbar>
+
+  <h3 id="index-heading1" style="color:#000000;">{{text}} ({{count}})</h3>
+
+  <ion-list class="margin">
+    <ion-item-sliding  *ngFor="let item of notes">
+      <ion-item style="font-size: 22px;" (click)="openNote(item)">
+
+
+        <ion-icon name="md-done-all" *ngIf="testView(item)"  ></ion-icon>
+        <ion-icon name="md-checkmark" *ngIf="!testView(item)" ></ion-icon>
+        {{item.name}}
+        <ion-icon name='ios-lock-outline' class="icon-position" *ngIf="testType(item)"></ion-icon>
+        <ion-icon name='md-lock' class="icon-position" *ngIf="!testType(item)"></ion-icon>
+        <ion-badge class="badge-position">{{item.view_count}}</ion-badge>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteNote(item)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+
+<ion-fab bottom right>
+  <button color='danger' ion-fab (click)="openNew()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+</ion-content>
